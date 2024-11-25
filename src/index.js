@@ -37,7 +37,7 @@ async function getRandomBlock () {
 }
 
 async function logRollResult(characterName, block, diceResult, attribute ) {
-    console.log(`${characterName} 🎲 rolou um dado de ${block} ${diceResult}`)
+    console.log(`${characterName} 🎲 rolou um dado de ${block} ${diceResult} + ${attribute} = ${diceResult + attribute}`)
 }
 
 async function playRaceEngine (character1, character2) {
@@ -47,9 +47,8 @@ async function playRaceEngine (character1, character2) {
         // sortear bloco
         let block = await getRandomBlock()
         console.log(` Bloco: ${block}`);
-    }
 
-    //rolling the stones, kidding the dices
+        //rolling the stones, kidding the dices
     let diceResult1 = await rollDice()
     let diceResult2 = await rollDice()
 
@@ -92,12 +91,13 @@ async function playRaceEngine (character1, character2) {
             character2.MANOBRABILIDADE
         );
     }
-    }
 
     if(block === "COMFRONTO"){
         let powerResult1 = diceResult1 + character1.PODER
         let powerResult2 = diceResult2 + character2.PODER
     }
+    }
+}
 
 (async function main() {
     console.log(`🏁🚨 Corri entre ${player1.NOME} e ${player2.NOME} começando...\n`);
